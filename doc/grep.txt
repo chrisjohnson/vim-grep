@@ -1,4 +1,4 @@
-*grep.txt*   Plugin that integrates any grep utlity with Vim
+*grep.txt*   Plugin that integrates any grep utility with Vim
 
 ==============================================================================
 Author:  Teo Ljungberg <teo.ljungberg@gmail.com>                  *grep-author*
@@ -7,9 +7,8 @@ License: Same terms as Vim itself (see |license|)
 ==============================================================================
 INTRODUCTION                                                             *grep*
 
-This plugin is a front for the cli executable Grep.  Grep can be used as a
-replacement for grep.  This plugin will allow you to run ag from vim, and
-shows the results in a split window.
+This plugin will allow you to run any grep utility from vim, and
+shows the results in a quickfix window.
 
 :Grep[!] [options] {pattern} [{directory}]                               *:Grep*
 
@@ -22,10 +21,6 @@ shows the results in a split window.
 
     Just like |:Grep|, but instead of making a new list, the matches are
     appended to the current |quickfix| list.
-
-:GrepFromSearch [{directory}]                                  *:GrepFromSearch*
-
-    Just like |:Grep| but the pattern is from previous search.
 
 :LGrep [options] {pattern} [{directory}]                                *:LGrep*
 
@@ -75,9 +70,11 @@ Ag:                                                                  *grep-ag*
 Add this to your `~/.vimrc`:
 
     let g:grepprg="ag --nogroup --column"
+    let g:grepformat="%f:%l:%c:%m"
 
 Ack:                                                                *grep-ack*
 
 Add this to your `~/.vimrc`:
 
     let g:grepprg="ack --nogroup --column"
+    let g:grepformat="%f:%l:%c:%m"
