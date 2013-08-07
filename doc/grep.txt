@@ -70,11 +70,9 @@ Ag:                                                                  *grep-ag*
 Add this to your `~/.vimrc`:
 
     let g:grepprg="ag --nogroup --column"
-    let g:grepformat="%f:%l:%c:%m"
 
 Ack:                                                                *grep-ack*
 
 Add this to your `~/.vimrc`:
 
-    let g:grepprg="ack --nogroup --column"
-    let g:grepformat="%f:%l:%c:%m"
+    let g:grepprg="ack -H --nocolor --nogroup --column"

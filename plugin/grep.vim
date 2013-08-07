@@ -3,20 +3,25 @@ if !exists("g:grepprg")
   let g:grepprg="git grep -n"
 endif
 
-if !exists("g:grepformat")
-  let g:grepformat="%f:%l:%m"
-endif
+function! FormatForProgram(program)
+  if match(a:program, '^a(g|ck)') != -1
+    let t:grepformat="%f:%l:%c:%m"
+  else
+    let t:grepformat="%f:%l:%m"
+  endif
+endfunction
 
 function! s:Grep(cmd, args)
   redraw
   echo "Searching ..."
+  call FormatForProgram(g:grepprg)
 
   let grepprg_bak=&grepprg
   let grepformat_bak=&grepformat
 
   try
     let &grepprg=g:grepprg
-    let &grepformat=g:grepformat
+    let &grepformat=t:grepformat
     silent execute a:cmd . " " . a:args
   finally
     let &grepprg=grepprg_bak
