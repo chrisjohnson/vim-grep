@@ -19,7 +19,7 @@ Add this to your `~/.vimrc`:
 
 ### Ack
 
-You have to install [ack](https://beyondgrep.com), of course.
+You have to install [ack](http://beyondgrep.com/), of course.
 
 Install with Homebrew:
 
