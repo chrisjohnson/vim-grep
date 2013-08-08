@@ -27,7 +27,7 @@ Install with Homebrew:
 
 Add this to your `~/.vimrc`:
 
-    let g:grepprg="ack --nogroup --column"
+    let g:grepprg="ack -H --nocolor --nogroup --column"
 
 ### Git grep
 
