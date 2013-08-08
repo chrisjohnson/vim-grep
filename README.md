@@ -51,12 +51,12 @@ Just like where you use :grep, :grepadd, :lgrep, and :lgrepadd, you can use `:Gr
 
 In the quickfix window, you can use:
 
-    o    to open (same as enter)
-    go   to preview file (open but maintain focus on ag.vim results)
-    t    to open in new tab
-    T    to open in new tab silently
-    v    to open in vertical split
-    gv   to open in vertical split silently
-    q    to close the quickfix window
+    o                   open file (same as enter).
+    go                  preview file (open but maintain focus on the results).
+    t                   open in a new tab.
+    T                   open in new tab silently.
+    v                   open in vertical split.
+    gv                  open in vertical split silently.
+    q                   close the quickfix window.
 
 This plugin is almost copy and pasted from [mileszs' ack.vim plugin](https://github.com/mileszs/ack.vim).
