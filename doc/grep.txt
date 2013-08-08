@@ -30,7 +30,7 @@ shows the results in a quickfix window.
 :LGrepAdd [options] {pattern} [{directory}]                          *:LGrepAdd*
 
     Just like |:GrepAdd| but instead of the |quickfix| list, matches are added
-    to the current |location-list|
+    to the current |location-list|.
 
 :GrepFile [options] {pattern} [{directory}]                          *:GrepFile*
 
