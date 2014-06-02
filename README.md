@@ -47,16 +47,4 @@ in this window will open the file, and place the cursor on the matching line.
 
 Just like where you use :grep, :grepadd, :lgrep, and :lgrepadd, you can use `:Grep`, `:GrepAdd`, `:LGrep`, and `:LGrepAdd` respectively. (See `doc/grep.txt`, or `:h Grep` for more information.) 
 
-### Keyboard Shortcuts
-
-In the quickfix window, you can use:
-
-    o                   open file (same as enter).
-    go                  preview file (open but maintain focus on the results).
-    t                   open in a new tab.
-    T                   open in new tab silently.
-    v                   open in vertical split.
-    gv                  open in vertical split silently.
-    q                   close the quickfix window.
-
 This plugin is almost copy and pasted from [mileszs' ack.vim plugin](https://github.com/mileszs/ack.vim).
