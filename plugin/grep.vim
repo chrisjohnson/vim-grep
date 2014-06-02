@@ -28,12 +28,6 @@ function! s:Grep(cmd, args)
     let &grepformat=grepformat_bak
   endtry
 
-  if a:cmd =~# '^l'
-    botright lopen
-  else
-    botright copen
-  endif
-
   exec "map <silent> <buffer> q :ccl<CR>"
   exec "map <silent> <buffer> t <C-W><CR><C-W>T"
   exec "map <silent> <buffer> T <C-W><CR><C-W>TgT<C-W><C-W>"
