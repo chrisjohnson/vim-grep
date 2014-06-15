@@ -12,8 +12,6 @@ function! FormatForProgram(program)
 endfunction
 
 function! s:Grep(cmd, args)
-  redraw
-  echo "Searching ..."
   call FormatForProgram(g:grepprg)
 
   let grepprg_bak=&grepprg
@@ -22,13 +20,11 @@ function! s:Grep(cmd, args)
   try
     let &grepprg=g:grepprg
     let &grepformat=t:grepformat
-    silent execute a:cmd . " " . a:args
+    execute a:cmd . " " . a:args
   finally
     let &grepprg=grepprg_bak
     let &grepformat=grepformat_bak
   endtry
-
-  redraw!
 endfunction
 
 command! -bang -nargs=* -complete=file Grep call s:Grep('grep<bang>',<q-args>)
