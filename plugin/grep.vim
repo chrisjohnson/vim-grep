@@ -6,7 +6,7 @@ if !exists("g:grepprg")
     if executable("ag")
       let g:grepprg="ag --nogroup --column"
     else
-      echoerr "No available grep command found, tried `git-grep` and `ag`"
+      let g:grepprg="grep -rnH "
     endif
   endif
 endif

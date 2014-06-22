@@ -63,4 +63,4 @@ Fallbacks                                                     *grep-fallbacks*
 
 `git-grep will be used first if available.
 If not, it will fallback to `ag`.
-If `ag` isn't installed, it will prompt the user to install one of the two
+If `ag` isn't installed, `grep` will be used
