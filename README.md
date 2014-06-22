@@ -3,41 +3,42 @@
 A utility for grepping that isn't limited to a specific program
 
 ## Installation
-
 ### Ag
 
 You have to install [ag](https://github.com/ggreer/the_silver_searcher), of course.
 
 Install with Homebrew:
 
-    brew install the_silver_searcher
+```bash
+brew install the_silver_searcher
+```
 
 Add this to your `~/.vimrc`:
-
-    let g:grepprg="ag --nogroup --column"
-
+```bash
+let g:grepprg="ag --nogroup --column"
+```
 
 ### Ack
-
 You have to install [ack](http://beyondgrep.com/), of course.
 
 Install with Homebrew:
 
-    brew install ack
+```bash
+brew install ack
+```
 
 Add this to your `~/.vimrc`:
 
-    let g:grepprg="ack -H --nocolor --nogroup --column"
+```bash
+let g:grepprg="ack -H --nocolor --nogroup --column"
+```
 
 ### Git grep
-
 Install git, which you probably have installed
-
 Do nothing, git grep is the default grep command
 
 ## Usage
-
-    :Grep [options] {pattern} [{directory}]
+`:Grep [options] {pattern} [{directory}]`
 
 Search recursively in {directory} (which defaults to the current directory) for the {pattern}.
 
