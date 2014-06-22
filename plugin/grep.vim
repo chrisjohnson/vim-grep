@@ -1,6 +1,12 @@
 " Grep utility
 if !exists("g:grepprg")
-  let g:grepprg="git grep -n"
+  if isdirectory(".git")
+    let g:grepprg="git grep -n"
+  else
+    if executable("ag")
+      let g:grepprg="ag --nogroup --column"
+    endif
+  endif
 endif
 
 function! FormatForProgram(program)
