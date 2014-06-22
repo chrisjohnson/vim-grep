@@ -57,3 +57,10 @@ Ack:                                                                *grep-ack*
 Add this to your `~/.vimrc`:
 
     let g:grepprg="ack -H --nocolor --nogroup --column"
+
+==============================================================================
+Fallbacks                                                     *grep-fallbacks*
+
+`git-grep will be used first if available.
+If not, it will fallback to `ag`.
+If `ag` isn't installed, it will prompt the user to install one of the two

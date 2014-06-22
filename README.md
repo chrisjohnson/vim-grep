@@ -2,6 +2,11 @@
 
 A utility for grepping that isn't limited to a specific program
 
+## Fallbacks
+`grep.vim` will try to use `git-grep` if available.
+If not, it will fallback to `ag`.
+If `ag` isn't installed, it will prompt the user to install one of the two
+
 ## Installation
 ### Ag
 
