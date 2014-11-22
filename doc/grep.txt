@@ -1,7 +1,7 @@
 *grep.txt*   Plugin that integrates any grep utility with Vim
 
 ==============================================================================
-Author:  Teo Ljungberg <teo.ljungberg@gmail.com>                  *grep-author*
+Author:  Teo Ljungberg <teo@teoljungberg.com>                     *grep-author*
 License: Same terms as Vim itself (see |license|)
 
 ==============================================================================
