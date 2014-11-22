@@ -7,9 +7,16 @@ A utility for grepping that isn't limited to a specific program
 If not, it will fallback to `ag`.
 If `ag` isn't installed, `grep` will be used.
 
-## Installation
-### Ag
+**Note** this only works when you have not set a `g:grepprg`,
+since if you are overriding the `g:grepprg` you have decided
+on that specific `g:grepprg`.
+The fallback is in place because `git-grep` does not work outside a
+git-repository
 
+## Installation
+Pick one of the supported alternatives: `ag`, `ack` and `git-grep`
+
+### Ag
 You have to install [ag](https://github.com/ggreer/the_silver_searcher), of course.
 
 Install with Homebrew:
