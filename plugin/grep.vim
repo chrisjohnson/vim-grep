@@ -1,6 +1,8 @@
 " Grep utility
 if !exists("g:grepprg")
-  if isdirectory(".git")
+  let is_git_repo = system("git rev-parse --is-inside-work-tree &> /dev/null ; echo $?") == 0
+
+  if is_git_repo
     let g:grepprg="git grep -n"
   else
     if executable("ag")
