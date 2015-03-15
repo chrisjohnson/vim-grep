@@ -1,6 +1,7 @@
 " Grep utility
 if !exists("g:grepprg")
-  let is_git_repo = system("git rev-parse --is-inside-work-tree &> /dev/null ; echo $?") == 0
+  let output = system("git rev-parse --is-inside-work-tree")
+  let is_git_repo = v:shell_error == 0
 
   if is_git_repo
     let g:grepprg="git grep -n"
