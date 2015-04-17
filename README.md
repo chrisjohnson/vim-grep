@@ -63,4 +63,36 @@ in this window will open the file, and place the cursor on the matching line.
 Just like where you use :grep, :grepadd, :lgrep, and :lgrepadd, you can use
 `:Grep`, `:GrepAdd`, `:LGrep`, and `:LGrepAdd` respectively.
 
-This plugin is almost copy and pasted from [mileszs' ack.vim plugin](https://github.com/mileszs/ack.vim).
+This plugin is almost copy and pasted from [mileszs' ack.vim
+plugin](https://github.com/mileszs/ack.vim).
+
+## Motion
+Motions to grep for things. Works with pretty much everything, including:
+
+```
+w, W, e, E, b, B, t*, f*, i*, a*, and custom text objects
+```
+
+### Normal mode
+Place your cursor somewhere, type `gr` and, then perform a text-object for what
+you want to grep for.
+
+### Visual mode
+Visually select the pattern you want to grep for, type `gr`.
+
+### Mappings
+The mapping `gr` is set in both normal and visual-mode, if you want to remove it
+to set your own mappings you set `g:grep_no_maps` in your `.vimrc`
+
+If you want to use `qq` instead of `gr`:
+
+```viml
+let g:grep_no_maps = 1
+nnoremap <silent> qq :set opfunc=<SID>GrepMotion<CR>g@
+xnoremap <silent> qq :<C-U>call <SID>GrepMotion(visualmode())<CR>
+```
+
+# License
+
+Copyright (c) Teo Ljungberg. Distributed under the same terms as Vim itself. See
+`:help license`.
