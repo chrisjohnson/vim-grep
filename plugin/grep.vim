@@ -7,7 +7,7 @@ if !exists("g:grepprg")
     let g:grepprg="git grep -n"
   else
     if executable("ag")
-      let g:grepprg="ag --nogroup --column"
+      let g:grepprg="ag --nogroup --column --hidden"
     else
       let g:grepprg="grep -rnH "
     endif
