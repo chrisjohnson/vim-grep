@@ -6,10 +6,14 @@ if !exists("g:grepprg")
   if is_git_repo
     let g:grepprg="git --no-pager grep -n"
   else
-    if executable("ag")
-      let g:grepprg="ag --nogroup --column --hidden"
+    if exists("g:grepprg_fallback")
+      let g:grepprg = g:grepprg_fallback
     else
-      let g:grepprg="grep -rnH "
+      if executable("ag")
+        let g:grepprg="ag --nogroup --column --hidden"
+      else
+        let g:grepprg="grep -rnH "
+      endif
     endif
   endif
 endif
