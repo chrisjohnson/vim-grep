@@ -7,7 +7,7 @@ function! PrepGrep()
     let g:grepprg="git --no-pager grep -n"
   else
     if executable("ag")
-      let g:grepprg="ag --nogroup --column --hidden"
+      let g:grepprg="ag --vimgrep --column --hidden"
     else
       let g:grepprg="grep -rnH "
     endif
