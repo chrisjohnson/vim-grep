@@ -9,7 +9,7 @@ function! PrepGrep()
     if executable("ag")
       let g:grepprg="ag --vimgrep --column --hidden"
     else
-      let g:grepprg="grep -rnH "
+      let g:grepprg="grep -rnH"
     endif
   endif
 endfunction
