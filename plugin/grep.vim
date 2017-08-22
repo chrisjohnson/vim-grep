@@ -1,5 +1,5 @@
 " Grep utility
-if !exists("g:grepprg")
+function! PrepGrep()
   let output = system("git rev-parse --is-inside-work-tree")
   let is_git_repo = v:shell_error == 0
 
@@ -7,12 +7,12 @@ if !exists("g:grepprg")
     let g:grepprg="git --no-pager grep -n"
   else
     if executable("ag")
-      let g:grepprg="ag --nogroup --column --hidden"
+      let g:grepprg="ag --vimgrep --column --hidden"
     else
-      let g:grepprg="grep -rnH "
+      let g:grepprg="grep -rnH"
     endif
   endif
-endif
+endfunction
 
 function! FormatForProgram(program)
   if match(a:program, '^a(g|ck)') != -1
@@ -23,6 +23,7 @@ function! FormatForProgram(program)
 endfunction
 
 function! s:Grep(cmd, args)
+  call PrepGrep()
   call FormatForProgram(g:grepprg)
 
   if exists(":Dispatch")
