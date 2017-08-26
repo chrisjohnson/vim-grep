@@ -22,8 +22,8 @@ function! s:Grep(cmd, args)
   call PrepGrep()
   let args = a:args
   if match(a:cmd, '^l\?grep') != -1
-    " Pass a dir to grep
-    let args = args . ' .'
+    " Pass a dir to grep, and ignore any STDERR
+    let args = args . ' . 2>/dev/null'
   endif
 
   if exists(":Dispatch")
