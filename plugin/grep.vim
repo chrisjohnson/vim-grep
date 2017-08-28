@@ -1,39 +1,39 @@
 " Grep utility
 function! PrepGrep()
-  let output = system("git rev-parse --is-inside-work-tree")
-  let is_git_repo = v:shell_error == 0
-
-  if is_git_repo
-    let g:grepprg="git --no-pager grep -n"
+  if executable("rg")
+    let g:grepprg="rg --vimgrep --color=never --no-heading --hidden"
   else
-    if executable("ag")
-      let g:grepprg="ag --vimgrep --column --hidden"
+    let output = system("git rev-parse --is-inside-work-tree")
+    let is_git_repo = v:shell_error == 0
+
+    if is_git_repo
+      let g:grepprg="git --no-pager grep -n"
     else
-      let g:grepprg="grep -rnH"
+      if executable("ag")
+        let g:grepprg="ag --vimgrep --color=never --column --hidden"
+      else
+        let g:grepprg="grep -rnH"
+      endif
     endif
-  endif
-endfunction
-
-function! FormatForProgram(program)
-  if match(a:program, '^a(g|ck)') != -1
-    let b:grepformat="%f:%l:%c:%m"
-  else
-    let b:grepformat="%f:%l:%m"
   endif
 endfunction
 
 function! s:Grep(cmd, args)
   call PrepGrep()
-  call FormatForProgram(g:grepprg)
+  let args = a:args
+  if match(a:cmd, '^l\?grep') != -1
+    " Pass a dir to grep
+    let args = args . ' .'
+  endif
 
   if exists(":Dispatch")
     if match(a:cmd, "^l.*") != -1
-      call s:SearchWithGrep(a:cmd, a:args)
+      call s:SearchWithGrep(a:cmd, args)
     else
-      call s:SearchWithDispatch(a:cmd, a:args)
+      call s:SearchWithDispatch(a:cmd, args)
     endif
   else
-    call s:SearchWithGrep(a:cmd, a:args)
+    call s:SearchWithGrep(a:cmd, args)
   endif
 endfunction
 
@@ -43,7 +43,7 @@ function! s:SearchWithGrep(cmd, args)
 
   try
     let &grepprg=g:grepprg
-    let &grepformat=b:grepformat
+    let &grepformat="%f:%l:%c:%m,%f:%l:%m"
     execute a:cmd . " " . a:args
   finally
     let &grepprg=grepprg_bak
@@ -57,7 +57,7 @@ function! s:SearchWithDispatch(cmd, args)
 
   try
     let &l:makeprg = g:grepprg . ' ' . a:args
-    let &l:errorformat = b:grepformat
+    let &l:errorformat = "%f:%l:%c:%m,%f:%l:%m"
 
     Make
   finally

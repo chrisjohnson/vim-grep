@@ -2,19 +2,27 @@
 
 A utility for grepping that isn't limited to a specific program
 
-## Fallbacks
-- `grep.vim` will try to use `git-grep` if available.
+## Selection
+- `grep.vim` will try to use `rg` if available.
+- If `rg` is unavailable, and the file is in a git repo, `git-grep` will be used.
 - If not, it will fallback to `ag`.
-- If `ag` isn't installed, `grep` will be used.
+- If `ag` is unavailable, `grep` will be used.
 
-**Note** this only works when you have not set a `g:grepprg`,
-since if you are overriding the `g:grepprg` you have decided
-on that specific `g:grepprg`.
-The fallback is in place because `git-grep` does not work outside a
-git-repository
+**Note** This will clobber your `g:grepprg` by overwriting it whenever `:Grep` is
+called with the appropriate tool based on the file and your environment.
 
 ## Installation
-Pick one of the supported alternatives: `ag`, `ack` and `git-grep`
+Pick one of the supported alternatives: `rg`, `ag` and `git-grep`
+
+### Rg
+You have to install [rg](https://github.com/BurntSushi/ripgrep), of
+course.
+
+Install with Homebrew:
+
+```bash
+brew install rg
+```
 
 ### Ag
 You have to install [ag](https://github.com/ggreer/the_silver_searcher), of
@@ -26,29 +34,8 @@ Install with Homebrew:
 brew install the_silver_searcher
 ```
 
-Add this to your `~/.vimrc`:
-```bash
-let g:grepprg="ag --nogroup --column"
-```
-
-### Ack
-You have to install [ack](http://beyondgrep.com/), of course.
-
-Install with Homebrew:
-
-```bash
-brew install ack
-```
-
-Add this to your `~/.vimrc`:
-
-```bash
-let g:grepprg="ack -H --nocolor --nogroup --column"
-```
-
 ### Git grep
-Install git, which you probably have installed
-Do nothing, git grep is the default grep command
+This comes with git, and will automatically be used when appropriate
 
 ## Usage
 `:Grep [options] {pattern} [{directory}]`
