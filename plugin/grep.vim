@@ -1,16 +1,16 @@
 " Grep utility
 function! PrepGrep()
   if executable("rg")
-    let g:grepprg="rg --vimgrep --color=never --no-heading --hidden"
+    let g:grepprg=get(g:, "vimgrep_rg_command", "rg --vimgrep --color=never --no-heading --hidden")
   else
     let output = system("git rev-parse --is-inside-work-tree")
     let is_git_repo = v:shell_error == 0
 
     if is_git_repo
-      let g:grepprg="git --no-pager grep -n"
+      let g:grepprg=get(g:, "vimgrep_gitgrep_command", "git --no-pager grep -n")
     else
       if executable("ag")
-        let g:grepprg="ag --vimgrep --color=never --column --hidden"
+        let g:grepprg=get(g:, "vimgrep_ag_command", "ag --vimgrep --color=never --column --hidden")
       else
         let g:grepprg="grep -rnH"
       endif

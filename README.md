@@ -79,6 +79,15 @@ nnoremap <silent> qq :set opfunc=<SID>GrepMotion<CR>g@
 xnoremap <silent> qq :<C-U>call <SID>GrepMotion(visualmode())<CR>
 ```
 
+## Customizing
+
+The following options allow customization of the commands.
+```viml
+let g:vimgrep_rg_command="rg --vimgrep --color=never --no-heading --hidden"
+let g:vimgrep_ag_command="ag --vimgrep --color=never --column --hidden"
+let g:vimgrep_gitgrep_command="git --no-pager grep -n"
+```
+
 # License
 
 Copyright (c) Teo Ljungberg. Distributed under the same terms as Vim itself. See
